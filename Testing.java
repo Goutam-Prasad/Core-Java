@@ -12,5 +12,6 @@ public class Testing {
         System.out.println("Testing singed key in commits section version 6");
         System.out.println("Testing singed key in commits section version 7");
         System.out.println("Testing singed key in commits section version 8");
+        System.out.println("Testing singed key in commits section version 9");
     }
 }
