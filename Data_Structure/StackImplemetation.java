@@ -61,7 +61,7 @@ class StackImplemetationClass {
 
 }
 
-public class Implementation {
+public class StackImplemetation {
     public static void main(String[] args) {
         StackImplemetationClass stack = new StackImplemetationClass(5);
 
