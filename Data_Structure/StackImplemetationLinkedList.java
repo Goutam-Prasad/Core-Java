@@ -1,14 +1,5 @@
 package Data_Structure;
 
-class Node {
-    int data;
-    Node next;
-
-    public Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
 
 class StackLinkedList {
     private Node top;
@@ -30,7 +21,7 @@ class StackLinkedList {
         if (isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
-        int value = top.data;
+        int value = top.value;
         top = top.next;
         size--;
         return value;
@@ -40,7 +31,7 @@ class StackLinkedList {
         if (isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
-        return top.data;
+        return top.value;
     }
 
     public boolean isEmpty() {
@@ -59,7 +50,7 @@ class StackLinkedList {
         System.out.print("Stack (top to bottom): ");
         Node current = top;
         while (current != null) {
-            System.out.print(current.data + " ");
+            System.out.print(current.value + " ");
             current = current.next;
         }
         System.out.println();
