@@ -1,4 +1,4 @@
-package Data_Structure;
+package datastructure;
 
 
 class StackLinkedList {
