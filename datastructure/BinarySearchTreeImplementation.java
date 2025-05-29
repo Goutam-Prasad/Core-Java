@@ -15,13 +15,13 @@ class BST {
         return root;
     }
 
-    private TreeNode deleteNode(TreeNode root, int value) {
+    private TreeNode delete(TreeNode root, int value) {
         if (root == null) return null;
 
         if (value < root.value) {
-            root.left = deleteNode(root.left, value);
+            root.left = delete(root.left, value);
         } else if (value > root.value) {
-            root.right = deleteNode(root.right, value);
+            root.right = delete(root.right, value);
         } else {
             if (root.left == null && root.right == null) {
                 return null;
@@ -33,35 +33,19 @@ class BST {
             }
 
             //This is finding min of the right subtree to replace the deleted node with
-            TreeNode successor = findInorderSuccessor(root.right);
+            TreeNode successor = findInOrderSuccessor(root.right);
             root.value = successor.value;
-            root.right = deleteNode(root.right, successor.value);
+            root.right = delete(root.right, successor.value);
         }
 
         return root;
     }
 
-    private TreeNode findInOrderSuccessor(TreeNode root, TreeNode target) {
-        if (target == null) return null;
-
-        // Case 1: Right subtree exists
-        if (target.right != null) {
-            return findMin(target.right);
+    private TreeNode findInOrderSuccessor(TreeNode root) {
+        while (root.left != null) {
+            root = root.left;
         }
-
-        // Case 2: No right subtree → find lowest ancestor
-        TreeNode successor = null;
-        while (root != null) {
-            if (target.value < root.value) {
-                successor = root;
-                root = root.left;
-            } else if (target.value > root.value) {
-                root = root.right;
-            } else {
-                break;
-            }
-        }
-        return successor;
+        return root;
     }
 
     // Helper function to find minimum in a subtree
@@ -105,5 +89,50 @@ class BST {
 
     public int height() {
         return findHeight(root);
+    }
+
+    public void delete(int value){
+        delete(root, value);
+    }
+}
+
+public class BinarySearchTreeImplementation {
+    public static void main(String[] args) {
+        BST bst = new BST();
+
+        // Insert values
+        bst.insert(50);
+        bst.insert(30);
+        bst.insert(70);
+        bst.insert(20);
+        bst.insert(40);
+        bst.insert(60);
+        bst.insert(80);
+
+        // Search for a value
+        TreeNode found = bst.search(40);
+        if (found != null) {
+            System.out.println("Found node with value: " + found.value);
+        } else {
+            System.out.println("Value not found");
+        }
+
+        // Print height
+        System.out.println("Height of tree: " + bst.height());
+
+        // Delete a value
+        System.out.println("Deleting 70...");
+        bst.delete(70);
+
+        // Try to search deleted node
+        TreeNode deleted = bst.search(70);
+        if (deleted != null) {
+            System.out.println("Found node with value: " + deleted.value);
+        } else {
+            System.out.println("Value 70 not found (deleted)");
+        }
+
+        // Print height after deletion
+        System.out.println("Height after deletion: " + bst.height());
     }
 }

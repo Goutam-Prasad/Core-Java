@@ -161,7 +161,7 @@ class BinaryTree {
     }
 
     // Delete a node by replacing it with the deepest node
-    public void deleteNode(int key) {
+    public void delete(int key) {
         if (root == null)
             return;
 
@@ -243,12 +243,12 @@ public class BinaryTreeImplementation {
 
         // Delete a node and print the level order again
         System.out.println("\nDeleting node with value 3");
-        tree.deleteNode(3);
+        tree.delete(3);
         System.out.println("Level Order After Deletion:");
         tree.printLevelOrder();
 
         System.out.println("\nDeleting node with value 1 (root)");
-        tree.deleteNode(1);
+        tree.delete(1);
         System.out.println("Level Order After Deleting Root:");
         tree.printLevelOrder();
     }
